@@ -1,0 +1,18 @@
+
+\chapter{Conclusions and Recommendations}\label{ch:conclusions} 
+
+% restate main goal and problem
+The main goal was to develop a robust vision based algorithm able to detect deposition height and width under sub-optimal hardware induced conditions. Furthermore, the algorithm should be flexible and applicable to many different image signatures.  
+
+% restate problems with algorithms
+Many algorithms in literature neglect sub-optimal conditions like pixel saturation and laser line inhomogenity. Most methods rely on peak detection of gray-scale images, edge detection using gradients and filtering to reduce noise.  
+
+% answer problem
+This research used template matching as a metric to replace gray-scale intensity which improves sensitivy to changes. The Triangle algorithm has been adapted as a replacement to the use of gradients leading to improved robustness against noise and sensitivity to change. Filtering has not been necessary for noise reduction and no parameters are used within the new algorithm except for an initial amount of columns used as template. A new global thresholding method has been developed focused at clarifying the edge with superior performance compared to Otsu's method. 
+
+% results
+The algorithm is able to detect width and height of deposition material for additive manufacturing processes. It has been tested on a experimental vision system using low-cost hardware. The algorithm works under pixel saturation due to measurement of the laser line edge instead of peak values. Inhomogenity of the laser line is taken into account by using average row and column pixel values. 
+
+\skippar
+% sketch problems for future
+Deposition height is measured as an average of all columns covering the deposition. This could in future work be improved to measure height at every column to identify the shape of the deposition. The measurements could also be improved by introducing sub-pixel accuracy. 

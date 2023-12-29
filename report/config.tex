@@ -1,0 +1,176 @@
+\documentclass[10pt,letter,twocolumn,openright]{book}
+
+% ******************************************************************
+% Personal data for cover and titlepage
+% ******************************************************************
+\newcommand{\myTitle}{Vision-based deposition geometry detection}
+\newcommand{\mySubtitle}{Algorithm Design for Additive Manufacturing}
+\newcommand{\myDegree}{ir.}
+\newcommand{\myName}{G.J.J. van Houtum}
+\newcommand{\myID}{0872274}
+\newcommand{\mySupervisor}{Dr.ir. Etman }
+\newcommand{\myOtherSupervisor}{M.L. Vlasea, PhD }
+\newcommand{\myMaster}{Systems and Control }
+\newcommand{\myProject}{\myMaster Master (20 ECTS) Internship Project }
+\newcommand{\myGroup}{Control Systems Technology}
+\newcommand{\myOtherGroup}{Multi-Scale Additive Manufacturing Lab }
+\newcommand{\myFaculty}{Mechanical Engineering}
+\newcommand{\myOtherFaculty}{Mechanical and Mechatronics Engineering}
+\newcommand{\myUni}{Eindhoven University of Technology}
+\newcommand{\myOtherUni}{University of Waterloo }
+\newcommand{\myLocation}{Tilburg, Netherlands}
+\newcommand{\myOtherLocation}{Waterloo, Canada}
+\newcommand{\myTime}{May 2018}
+\newcommand{\myVersion}{version 0.1}
+\newcommand{\myStartDate}{09/01/2016 }
+\newcommand{\myEndDate}{12/13/2016 }
+\newcommand{\myDuration}{14 Weeks and 5 days }
+
+% ********************************************************************
+% Set Font 
+% ********************************************************************
+
+% ptm = times, ppl = palantino, pnc = new century schoolbook, phv = helvetica
+\renewcommand*\sfdefault{cmr}
+\renewcommand*\rmdefault{cmr}
+%\renewcommand{\familydefault}{\rmdefault}
+
+\usepackage[left=1.5in, right=1in, top=1.5in, bottom=0.5in, includefoot]{geometry}
+
+% ********************************************************************
+% layout of the chapter-, section-, subsection-, subsubsection
+% ********************************************************************
+\usepackage{titlesec}
+
+% chapters
+\titleformat{\chapter}{}{\huge\bfseries\sffamily\thechapter}{1em}{\huge\bfseries\sffamily}
+	[\normalsize\vspace*{-0.5\baselineskip}\rule{\linewidth}{0.5mm}]
+	
+\titleformat{name=\chapter,numberless}{}{}{0em}{\huge\bfseries\sffamily}
+    [\normalsize\vspace*{-0.5\baselineskip}\rule{\linewidth}{0.5mm}]
+    
+% sections 
+\titleformat{\section}{}{\Large\bfseries\sffamily\thesection}{1em}{\Large\bfseries\sffamily}
+    
+% subsections
+\titleformat{\subsection}{}{\normalsize\bfseries\sffamily\thesubsection}{1em}{\normalsize\bfseries\sffamily}
+    
+% subsubsections
+\titleformat{\subsubsection}{}{\thesubsubsection}{1em}{\normalsize\itshape\sffamily}
+    
+% spacing
+\titlespacing*{\chapter}{0pt}{0pt}{1.5\baselineskip}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{1\baselineskip}
+\titlespacing*{\subsection}{0pt}{1.25\baselineskip}{0.75\baselineskip}
+\titlespacing*{\paragraph}{0pt}{1\baselineskip}{1\baselineskip}
+
+% ********************************************************************
+% layout for page numbering and headers
+% ********************************************************************
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% Text to display in header
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\,\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\,\ #1}}
+
+% positioning of header
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\sffamily\normalsize\rightmark}
+\fancyhead[RE]{\sffamily\normalsize\leftmark}
+\setlength{\headheight}{14pt}
+% no line in header
+%\renewcommand{\headrulewidth}{0pt}
+
+% remove header on all empty pages
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\vfill
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+         
+% Only page numbering on chapter page (redefine plain style)
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+   
+% ********************************************************************
+% Combine list of tables and list of figures
+% ********************************************************************   
+\makeatletter
+\providecommand\phantomsection{}% for hyperref
+
+\newcommand\lists{%
+    \chapter*{Lists}%
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Lists}%
+    \section*{Figures}%
+    \phantomsection
+    \addcontentsline{toc}{section}{\protect\numberline{}Figures}%
+    \@starttoc{lof}%
+    \bigskip
+    \section*{Tables}%
+    \phantomsection
+    \addcontentsline{toc}{section}{\protect\numberline{}Tables}%
+    \@starttoc{lot}
+    %\section*{Acronyms}
+    %\phantomsection
+	% SHOULD DO SOMETHING TO GENERATE THE LIST OF ACRONYMS!!!!
+    %\addcontentsline{toc}{section}{\protect\numberline{}Acronyms}%
+    }
+\makeatother
+
+% ********************************************************************
+% Bibiliography
+% ********************************************************************   
+\makeatletter
+\providecommand\phantomsection{}% for hyperref
+
+\newcommand\references{%
+    \bibliography{main}
+    \phantomsection
+    %\bibliographystyle{plain}
+    \bibliographystyle{unsrt}
+    \addcontentsline{toc}{chapter}{Bibliography}%
+    }
+\makeatother
+
+% ********************************************************************
+% Other packages
+% ********************************************************************
+%\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\graphicspath{ {Figures/} }
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm2e}
+\newcommand*{\skippar}{\vspace{\baselineskip}\noindent}
+\newcommand{\argmin}{\arg\!\min}
+\newcommand{\argmax}{\arg\!\max}
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{block_scan} = [rectangle, draw, fill=red!20, 
+    text width=6em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{block_prof} = [rectangle, draw, fill=green!20, 
+    text width=6em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+
+    
